@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Electricity Bill Predictor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>⚡ Electricity Bill Predictor</h1>
+
+    <label>Fan (hours/day):</label>
+    <input type="number" id="fan" placeholder="e.g 5">
+
+    <label>AC (hours/day):</label>
+    <input type="number" id="ac" placeholder="e.g 3">
+
+    <label>TV (hours/day):</label>
+    <input type="number" id="tv" placeholder="e.g 4">
+
+    <label>Light (hours/day):</label>
+    <input type="number" id="light" placeholder="e.g 6">
+
+    <button onclick="calculateBill()">Calculate</button>
+
+    <h2 id="result"></h2>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
