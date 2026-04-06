@@ -1,31 +1,26 @@
 function calculateBill() {
-    let fan = document.getElementById("fan").value || 0;
-    let ac = document.getElementById("ac").value || 0;
-    let tv = document.getElementById("tv").value || 0;
-    let light = document.getElementById("light").value || 0;
+    let units = document.getElementById("units").value;
 
-    // Power consumption (units per hour)
-    let fanUnit = 0.075;
-    let acUnit = 1.5;
-    let tvUnit = 0.1;
-    let lightUnit = 0.06;
+    // Validation
+    if (units === "" || units < 0) {
+        alert("❌ Please enter valid electricity units!");
+        return;
+    }
 
-    // Daily units
-    let dailyUnits =
-        (fan * fanUnit) +
-        (ac * acUnit) +
-        (tv * tvUnit) +
-        (light * lightUnit);
+    units = Number(units);
 
-    // Monthly units (30 days)
-    let monthlyUnits = dailyUnits * 30;
-
-    // Simple tariff
     let bill = 0;
-    if (monthlyUnits <= 100) bill = monthlyUnits * 1.5;
-    else if (monthlyUnits <= 300) bill = monthlyUnits * 3;
-    else bill = monthlyUnits * 5;
 
-    document.getElementById("result").innerHTML =
-        `Units: ${monthlyUnits.toFixed(2)}<br>Estimated Bill: ₹${bill.toFixed(2)}`;
+    // Slab-based billing logic
+    if (units <= 100) {
+        bill = units * 1.5;
+    } else if (units <= 200) {
+        bill = (100 * 1.5) + (units - 100) * 2;
+    } else {
+        bill = (100 * 1.5) + (100 * 2) + (units - 200) * 3;
+    }
+
+    // ✅ Output result (THIS WAS MISSING)
+    document.getElementById("result").innerText =
+        "💡 Your Electricity Bill is: ₹" + bill;
 }
